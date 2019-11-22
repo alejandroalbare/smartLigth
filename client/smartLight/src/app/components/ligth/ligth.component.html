@@ -1,0 +1,21 @@
+<mat-card class="ligth-card">
+
+        <div>
+            <mat-card-title>
+                {{ligth.Name}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                #{{ligth.Id}}
+            </mat-card-subtitle>
+        </div>
+    
+        <div>
+            <mat-slide-toggle
+                class="ligth-check"
+                [color]="color"
+                [checked]="checked"
+                [disabled]="disabled">
+            </mat-slide-toggle>
+        </div>
+
+</mat-card>

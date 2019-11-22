@@ -1,0 +1,11 @@
+.ligth-card{
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 50px;
+}
+
+.ligth-check{
+    transform: scale(2.7);
+}
