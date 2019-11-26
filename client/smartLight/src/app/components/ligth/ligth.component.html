@@ -1,21 +1,19 @@
-<mat-card class="ligth-card">
+<div class="ligth-card">
 
-        <div>
-            <mat-card-title>
-                {{ligth.Name}}
-            </mat-card-title>
-            <mat-card-subtitle>
-                #{{ligth.Id}}
-            </mat-card-subtitle>
-        </div>
-    
-        <div>
-            <mat-slide-toggle
-                class="ligth-check"
-                [color]="color"
-                [checked]="checked"
-                [disabled]="disabled">
-            </mat-slide-toggle>
-        </div>
+    <div>
+        <p class="name">
+            {{ligth.Name}}
+        </p>
+        <p class="id">
+            #{{ligth.Id}}
+        </p>
+    </div>
 
-</mat-card>
+    <div>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+    </div>
+
+</div>
