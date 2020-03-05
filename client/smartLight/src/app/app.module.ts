@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearcherComponent } from './components/searcher/searcher.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 // Form Controls
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -68,6 +69,7 @@ import { LigthComponent } from './components/ligth/ligth.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     CommonModule,
+    HttpClientModule,
     // Angular Material
     MatAutocompleteModule,
     MatCheckboxModule,

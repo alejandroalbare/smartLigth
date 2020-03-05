@@ -10,9 +10,6 @@ export class LigthListComponent implements OnInit {
   public ligths: any = [{
     Name: "Kitchen Ligth",
     Id: '000001'
-  },{
-    Name: "Bathroom Ligth",
-    Id: '000002'
   }];
 
   constructor() { }

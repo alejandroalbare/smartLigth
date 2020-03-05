@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+var cors = require("cors");
 var SerialPort = require("serialport");
 
 var port = 3000;
@@ -9,6 +10,8 @@ var arduinoCOMPort = "COM3";
 var arduinoSerialPort = new SerialPort(arduinoCOMPort, {
   baudRate: 9600
 });
+
+app.use(cors());
 
 arduinoSerialPort.on("open", function() {
   console.log("Serial Port " + arduinoCOMPort + " is opened.");
@@ -21,18 +24,18 @@ app.get("/", function(req, res) {
 app.get("/:action", function(req, res) {
   var action = req.params.action || req.param("action");
 
-  if (action == "on") {
+  if (action == "true") {
     arduinoSerialPort.write("w");
-    return res.send("Led light is on!");
+    return res.status(200).send({ res: "Led light is on!" });
   }
-  if (action == "off") {
+  if (action == "false") {
     arduinoSerialPort.write("t");
-    return res.send("Led light is off!");
+    return res.status(200).send({ res: "Led light is off!" });
   }
 
   return res.send("Action: " + action);
 });
 
 app.listen(port, function() {
-  console.log("Example app listening on port http://localhost:" + port + "!");
+  console.log("Example app listening on port http://localhost:" + port);
 });
