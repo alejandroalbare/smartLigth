@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CONTROL DE LUZ A TRAVES DE INTERNET</title>
+    <script type="text/javascript">
+      // Connect to the socket. Same URL, port 81.
+var Socket = new WebSocket('ws://' + window.location.hostname + ':81');
+//Recibe datos
+Socket.onmessage = function (evt) {
+ 
+};
+
+//Enviar datos
+var lastSend = 0;
+function enviarDatos() {
+  dato=0;
+  c=document.getElementById('check');
+  if(c.checked==true){
+    dato=1;
+    document.getElementById("foco").innerHTML="<b>ENCENDIDO</b>";
+  }else{
+    dato=0;
+     document.getElementById("foco").innerHTML="APAGADO";
+  }
+  
+  var now = (new Date).getTime();
+  if (lastSend > now - 20) return;
+  lastSend = now;
+  Socket.send(dato);
+}
+
+    </script>
+
+<style type="text/css">
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}  
+    </style>
+  </head>
+  <body>
+<center><h1>CONTROL RELEVADOR A TRAVES DE INTERNET</h1>
+
+<label class="switch">
+  <input type="checkbox" onclick="enviarDatos()" id="check">
+  <span class="slider round"></span>
+</label><br>
+<span id="foco">APAGADO</span>
+
+<h1>NodeMCU ESP8266 WebSocket WebServer</h1>
+ </center> 
+  </body>
+</html>

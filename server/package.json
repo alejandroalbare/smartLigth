@@ -8,7 +8,9 @@
     "express": "^4.17.1",
     "serialport": "^8.0.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
