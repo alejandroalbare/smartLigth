@@ -6,12 +6,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LigthService {
 
-  baseUrl: string = "http://localhost:3000";
+  baseUrl: string = "http://192.168.1.107:3001";
 
   constructor(private http: HttpClient) { }
 
   turn(status: boolean) {
-    return this.http.get(`${this.baseUrl}/${status}`);
+    if(status){
+      return this.http.get(`${this.baseUrl}/turnOn`);
+    }else{
+      return this.http.get(`${this.baseUrl}/turnOff`);
+    }
+  }
+
+  getStatus(){
+    return this.http.get(`${this.baseUrl}/getStatus`);
   }
 
 }

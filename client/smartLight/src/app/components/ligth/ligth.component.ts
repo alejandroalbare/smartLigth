@@ -8,7 +8,7 @@ import { LigthService } from './../../services/ligth.service';
 })
 export class LigthComponent implements OnInit {
 
-  private state: boolean = true;
+  private state: boolean;
 
   @Input()
   ligth: any;
@@ -16,15 +16,18 @@ export class LigthComponent implements OnInit {
   constructor(private _ligthService: LigthService) { }
 
   ngOnInit() {
+    this._ligthService.getStatus().subscribe((res: any) => {
+      console.log(res);
+      this.state = res.status;
+    })
   }
 
   turnLigth() {
     this._ligthService.turn(!this.state).subscribe((res) => {
-      console.log(res);
       this.state = !this.state
     },
       (err) => {
-        console.log(err);
+        throw "server error";
       });
   }
 

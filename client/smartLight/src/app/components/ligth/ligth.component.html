@@ -1,22 +1,17 @@
 <div class="ligth-card">
-  <img
-    *ngIf="state; else elseBlock"
-    src="https://img.icons8.com/dusk/120/000000/greentech.png"
-  />
-  <ng-template #elseBlock
-    ><img src="https://img.icons8.com/wired/120/000000/greentech.png"
-  /></ng-template>
-  <div class="info">
-    <p class="name">
-      {{ ligth.Name }}
-    </p>
-    <p class="id">#{{ ligth.Id }}</p>
-  </div>
+    <img *ngIf="state; else elseBlock" src="https://img.icons8.com/dusk/120/000000/greentech.png" />
+    <ng-template #elseBlock><img src="https://img.icons8.com/wired/120/000000/greentech.png" /></ng-template>
+    <div class="info">
+        <p class="name">
+            {{ ligth.Name }}
+        </p>
+        <p class="id">#{{ ligth.Id }}</p>
+    </div>
 
-  <div>
-    <label class="switch">
-      <input type="checkbox" checked (click)="turnLigth()" />
+    <div>
+        <label class="switch">
+      <input type="checkbox" [checked]="state" (click)="turnLigth()" />
       <span class="slider round"></span>
     </label>
-  </div>
+    </div>
 </div>
